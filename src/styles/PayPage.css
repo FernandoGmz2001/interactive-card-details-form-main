@@ -1,0 +1,160 @@
+.main {
+  display: flex;
+}
+
+.left-container {
+  width: 30%;
+  height: 100vh;
+  background-image: url(https://firebasestorage.googleapis.com/v0/b/cinepolis-hosting.appspot.com/o/PayMethod%20Main%20Card%2Fbg-main-desktop.png?alt=media&token=d7b2b407-d781-437d-93f4-e8cc07c8e9d7);
+  position: relative;
+}
+
+.card-front {
+  width: 400px;
+  height: 240px;
+  background-image: url(https://firebasestorage.googleapis.com/v0/b/cinepolis-hosting.appspot.com/o/PayMethod%20Main%20Card%2Fbg-card-front.png?alt=media&token=8ff01404-9fea-4eb5-9e09-5c3338c6fa4d);
+  position: absolute;
+  right: -100px;
+  top: 60px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 25px 25px;
+}
+
+.bottom-card_number {
+  display: flex;
+  justify-content: center;
+  color: var(--White);
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.bottom-card_number p {
+  letter-spacing: 4px;
+}
+
+.bottom-card_info {
+  display: flex;
+  justify-content: space-between;
+  color: var(--White);
+  font-size: 12px;
+}
+
+.card-back {
+  width: 400px;
+  height: 240px;
+  position: absolute;
+  right: -180px;
+  bottom: 60px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-image: url(https://firebasestorage.googleapis.com/v0/b/cinepolis-hosting.appspot.com/o/PayMethod%20Main%20Card%2Fbg-card-back.png?alt=media&token=7aeae0a8-a466-41c2-8e81-ea015a3ecd6e);
+  background-position: center;
+  object-fit: cover;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 25px;
+}
+
+.card-back p {
+  color: var(--White);
+}
+
+.right-container {
+  width: 70%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  gap: 10px;
+}
+
+.formulario .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group.cardInfo {
+  display: flex;
+  flex-direction: initial;
+  align-items: center;
+}
+
+.form-group_date {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form_group_date-dateInfo {
+  display: flex;
+  gap: 5px;
+}
+
+.form_group_date-dateInfo input {
+  width: 100px;
+}
+.form-group_cvc {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cardInfo {
+  display: flex;
+}
+
+.form-group .btnConfirm {
+  margin-top: 20px;
+}
+.btnConfirm {
+  background-color: var(--Very-dark-violet);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.confirmed-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+}
+
+.confirmed-image {
+  padding-bottom: 30px;
+  width: 50px;
+}
+
+.confirmed-container h3 {
+  color: var(--Very-dark-violet);
+  letter-spacing: 5px;
+  padding-bottom: 10px;
+}
+
+.confirmed-container p {
+  color: var(--Dark-grayish-violet);
+  font-size: 14px;
+}
+
+.btnContinue {
+  background-color: var(--Very-dark-violet);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+  width: 100%;
+  cursor: pointer;
+}
