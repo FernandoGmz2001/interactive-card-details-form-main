@@ -76,7 +76,7 @@
 .formulario {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 350px;
   gap: 10px;
 }
 
@@ -89,27 +89,29 @@
 .form-group.cardInfo {
   display: flex;
   flex-direction: initial;
-  align-items: center;
 }
 
 .form-group_date {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 40%;
 }
 
 .form_group_date-dateInfo {
   display: flex;
+  justify-content: space-around;
   gap: 5px;
 }
 
 .form_group_date-dateInfo input {
-  width: 100px;
+  width: 50px;
 }
 .form-group_cvc {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 70%;
 }
 
 .cardInfo {
@@ -120,6 +122,7 @@
   margin-top: 20px;
 }
 .btnConfirm {
+  cursor: pointer;
   background-color: var(--Very-dark-violet);
   color: white;
   padding: 10px;
@@ -157,4 +160,22 @@
   margin-top: 20px;
   width: 100%;
   cursor: pointer;
+}
+
+/* Manejo de errores */
+.InvalidType p {
+  color: red;
+}
+
+.error {
+  border-color: red;
+  color: red;
+  font-size: 12px;
+}
+
+.errorInput {
+}
+
+.hide {
+  display: none;
 }
