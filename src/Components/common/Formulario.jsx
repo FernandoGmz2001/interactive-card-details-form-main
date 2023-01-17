@@ -6,7 +6,7 @@ import {
   monthIsBlank,
   yearIsBlank,
   cvcIsBlank,
-} from "../../utils/inputValidations";
+} from "../../Utils/inputValidations.js";
 
 function Formulario({ form, setIsConfirmed }) {
   const {

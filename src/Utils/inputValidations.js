@@ -1,4 +1,3 @@
-import React from "react";
 const nameIsBlank = (value) => {
   return value.trim().length !== 0;
 };
