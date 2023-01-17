@@ -298,6 +298,7 @@ label {
     align-items: center;
     justify-content: center;
     position: relative;
+    padding-top: 150px;
   }
   .right-container {
     /* height: 60%; */
