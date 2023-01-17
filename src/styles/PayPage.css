@@ -287,7 +287,7 @@ label {
   .main {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 120vh;
   }
   .left-container {
     height: 80%;
@@ -299,7 +299,7 @@ label {
     position: relative;
   }
   .right-container {
-    /* height: 40%; */
+    /* height: 60%; */
     width: 100%;
   }
 
@@ -332,7 +332,7 @@ label {
   }
 
   .formulario {
-    margin-top: 40px;
+    margin-top: 100px;
     width: 80%;
   }
 
