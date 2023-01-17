@@ -2,6 +2,10 @@
   display: flex;
 }
 
+label {
+  font-size: 14px;
+}
+
 .card-container {
   height: 100%;
 }
@@ -213,12 +217,10 @@
     max-width: 400px;
     min-width: 200px;
     background-repeat: no-repeat;
-    top: 140px;
     right: -140px;
   }
   .card-back {
     background-repeat: no-repeat;
-    bottom: 140px;
     right: -140px;
   }
   .left-container {
@@ -281,7 +283,7 @@
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 490px) {
   .main {
     display: flex;
     flex-direction: column;
@@ -306,7 +308,7 @@
     top: 60%;
     right: 10%;
     width: 85%;
-    height: 55%;
+    height: 170px;
   }
   .card-back {
     position: absolute;
@@ -332,5 +334,13 @@
   .formulario {
     margin-top: 40px;
     width: 80%;
+  }
+
+  .form-group_cvc {
+    width: 50%;
+  }
+
+  .form-group_date {
+    width: 14ch;
   }
 }
