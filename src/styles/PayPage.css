@@ -2,9 +2,14 @@
   display: flex;
 }
 
+.card-container {
+  height: 100%;
+}
+
 .left-container {
   width: 30%;
   height: 100vh;
+  /* max-height: 768px; */
   background-image: url(https://firebasestorage.googleapis.com/v0/b/cinepolis-hosting.appspot.com/o/PayMethod%20Main%20Card%2Fbg-main-desktop.png?alt=media&token=d7b2b407-d781-437d-93f4-e8cc07c8e9d7);
   position: relative;
 }
@@ -15,12 +20,34 @@
   background-image: url(https://firebasestorage.googleapis.com/v0/b/cinepolis-hosting.appspot.com/o/PayMethod%20Main%20Card%2Fbg-card-front.png?alt=media&token=8ff01404-9fea-4eb5-9e09-5c3338c6fa4d);
   position: absolute;
   right: -100px;
-  top: 60px;
+  top: 10%;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 25px 25px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 15px;
+}
+
+.top-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.circle {
+  background-color: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.circle-border {
+  background-color: transparent;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid white;
 }
 
 .bottom-card_number {
@@ -47,7 +74,7 @@
   height: 240px;
   position: absolute;
   right: -180px;
-  bottom: 60px;
+  bottom: 10%;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -59,6 +86,7 @@
   justify-content: center;
   align-items: flex-end;
   padding: 25px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 15px;
 }
 
 .card-back p {
@@ -171,11 +199,138 @@
   border-color: red;
   color: red;
   font-size: 12px;
-}
-
-.errorInput {
+  /* display: block; */
 }
 
 .hide {
   display: none;
+}
+
+/* Media querys*/
+
+@media screen and (max-width: 1080px) {
+  .card-front {
+    max-width: 400px;
+    min-width: 200px;
+    background-repeat: no-repeat;
+    top: 140px;
+    right: -140px;
+  }
+  .card-back {
+    background-repeat: no-repeat;
+    bottom: 140px;
+    right: -140px;
+  }
+  .left-container {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  .left-container {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-repeat: round;
+  }
+  .right-container {
+    /* height: 40%; */
+    width: 100%;
+  }
+
+  .card-front {
+    z-index: 2;
+    top: 50%;
+    right: 10%;
+    height: 65%;
+    background-repeat: no-repeat;
+  }
+  .card-back {
+    position: absolute;
+    left: 20%;
+    bottom: 20%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 75%;
+  }
+
+  .bottom-card_number p {
+    font-size: 24px;
+  }
+  .bottom-card_info {
+    font-size: 10px;
+  }
+
+  .card-back p {
+    font-size: 12px;
+    margin-right: 20px;
+  }
+
+  .formulario {
+    margin-top: 40px;
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  .left-container {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .right-container {
+    /* height: 40%; */
+    width: 100%;
+  }
+
+  .card-front {
+    z-index: 2;
+    top: 60%;
+    right: 10%;
+    width: 85%;
+    height: 55%;
+  }
+  .card-back {
+    position: absolute;
+    left: 20%;
+    bottom: 15%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 80%;
+  }
+
+  .bottom-card_number p {
+    font-size: 16px;
+  }
+  .bottom-card_info {
+    font-size: 10px;
+  }
+
+  .card-back p {
+    font-size: 12px;
+    margin-right: 10px;
+  }
+
+  .formulario {
+    margin-top: 40px;
+    width: 80%;
+  }
 }

@@ -9,7 +9,7 @@ function Confirmed() {
         className="confirmed-image"
       />
       <h3>THANK YOU!</h3>
-      <p>We've added gour card details</p>
+      <p>We've added your card details</p>
       <button className="btnContinue">Continue</button>
     </div>
   );

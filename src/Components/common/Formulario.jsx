@@ -1,45 +1,75 @@
-import React, { useState } from "react";
+import React from "react";
 
-function Formulario({ setTarget, validateInputs, number, error, isBlank }) {
+import {
+  nameIsBlank,
+  numberIsBlank,
+  monthIsBlank,
+  yearIsBlank,
+  cvcIsBlank,
+} from "../../utils/inputValidations";
+
+function Formulario({ form, setIsConfirmed }) {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    watch,
+  } = form;
+  const onSubmit = () => setIsConfirmed(true);
   return (
-    <div className="formulario">
+    <form className="formulario" onSubmit={handleSubmit(onSubmit)}>
       <div className="form-group">
         <label htmlFor="">CARDHOLDER NAME</label>
         <input
           type="text"
+          {...register("name", {
+            required: true,
+            maxLength: 35,
+            pattern:
+              /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u,
+            validate: nameIsBlank,
+          })}
           placeholder="e.g.Jane Appleseed"
-          onChange={setTarget}
-          name="name"
-          required
           maxLength="35"
-          className={error.name || isBlank.name ? "error" : ""}
+          className={errors.name ? "error" : ""}
         />
-        <span className={error.name ? "error" : "hide"}>
-          Wrong format, letters only
-        </span>
-        <span className={isBlank.name ? "error" : "hide"}>Can't be blank</span>
+        {errors.name?.type === "required" && (
+          <span className="error">This field is required</span>
+        )}
+        {errors.name?.type === "pattern" && (
+          <span className="error">Wrong format, letters only</span>
+        )}
+        {errors.name?.type === "validate" && (
+          <span className="error">This field is required</span>
+        )}
       </div>
       <div className="form-group">
         <label htmlFor="">CARD NUMBER</label>
         <input
           type="text"
+          {...register("number", {
+            required: true,
+            pattern: /\b(?:\d[ -]*?){16,19}\b/,
+            validate: numberIsBlank,
+          })}
           placeholder="e.g_ 1234 5678 9123 0000"
-          required
           maxLength="19"
-          onChange={setTarget}
-          name="number"
-          value={number
+          min="19"
+          className={errors.number ? "error" : ""}
+          value={watch("number")
             .replace(/\s/g, "")
             .replace(/(\d{4})/g, "$1 ")
             .trim()}
-          className={error.number || isBlank.number ? "error" : ""}
         />
-        <span className={error.number ? "error" : "hide"}>
-          Wrong format, numbers only
-        </span>
-        <span className={isBlank.number ? "error" : "hide"}>
-          Can't be blank
-        </span>
+        {errors.number?.type === "required" && (
+          <span className="error">This field is required</span>
+        )}
+        {errors.number?.type === "pattern" && (
+          <span className="error">Wrong format</span>
+        )}
+        {errors.number?.type === "validate" && (
+          <span className="error">This field is required</span>
+        )}
       </div>
       <div className="form-group cardInfo">
         <div className="form-group_date">
@@ -48,57 +78,95 @@ function Formulario({ setTarget, validateInputs, number, error, isBlank }) {
             <div className="form_group_date-dateInfo">
               <input
                 type="text"
+                {...register("expMonth", {
+                  required: true,
+                  maxLength: 2,
+                  pattern: /^(0[1-9]|1[012])$/,
+                  min: 1,
+                  max: 12,
+                  validate: monthIsBlank,
+                })}
                 placeholder="MM"
-                onChange={setTarget}
-                name="expMonth"
-                required
                 maxLength="2"
                 min="1"
                 max="12"
-                className={error.expMonth || isBlank.expMonth ? "error" : ""}
+                className={errors.expMonth ? "error" : ""}
               />
               <input
                 type="text"
+                {...register("expYear", {
+                  required: true,
+                  pattern: /^(2[1-9]|0[012])$/,
+                  validate: yearIsBlank,
+                })}
                 placeholder="YY"
-                onChange={setTarget}
-                name="expYear"
-                required
                 maxLength="2"
                 min="23"
                 max="27"
-                className={error.expYear || isBlank.expYear ? "error" : ""}
+                className={errors.expYear ? "error" : ""}
               />
             </div>
           </div>
-          <span className={error.expMonth || error.expYear ? "error" : "hide"}>
-            Wrong format
-          </span>
-          <span
-            className={isBlank.expMonth || isBlank.expYear ? "error" : "hide"}
-          >
-            Can't be blank
-          </span>
+          {errors.expMonth?.type === "required" && (
+            <span className="error"> This field is required</span>
+          )}
+          {errors.expYear?.type === "required" && (
+            <span className="error"> This field is required</span>
+          )}
+          {errors.expMonth?.type === "pattern" && (
+            <span className="error"> Wrong format</span>
+          )}
+          {errors.expYear?.type === "pattern" && (
+            <span className="error"> Wrong format</span>
+          )}
+          {errors.expMonth?.type === "validate" && (
+            <span className="error"> This field is required</span>
+          )}
+          {errors.expYear?.type === "validate" && (
+            <span className="error"> This field is required</span>
+          )}
+          {errors.expMonth?.type === "max" &&
+            errors.expMonth?.type === "min" && (
+              <span className="error"> Wrong format</span>
+            )}
+          {errors.expYear?.type === "max" && errors.expYear?.type === "min" && (
+            <span className="error"> Wrong format</span>
+          )}
         </div>
         <div className="form-group_cvc">
           <label htmlFor="">CVC</label>
           <input
             type="text"
+            {...register("cvc", {
+              required: true,
+              maxLength: 3,
+              pattern: /^[0-9]{3,4}$/,
+              validate: cvcIsBlank,
+            })}
             placeholder="e.g. 123"
-            onChange={setTarget}
-            name="cvc"
-            required
             maxLength="3"
-            className={error.cvc || isBlank.cvc ? "error" : ""}
+            className={errors.cvc ? "error" : ""}
           />
-          <span className={isBlank.cvc ? "error" : "hide"}>Can't be blank</span>
+          {errors.cvc?.type === "required" && (
+            <span className="error">This field is required</span>
+          )}
+          {errors.cvc?.type === "pattern" && (
+            <span className="error">Wrong format</span>
+          )}
+          {errors.cvc?.type === "validate" && (
+            <span className="error">This field is required</span>
+          )}
         </div>
       </div>
       <div className="form-group">
-        <button className="btnConfirm" onClick={validateInputs}>
-          Confirm
-        </button>
+        <input
+          type="submit"
+          value="confirm"
+          className="btnConfirm"
+          onClick={handleSubmit}
+        />
       </div>
-    </div>
+    </form>
   );
 }
 
